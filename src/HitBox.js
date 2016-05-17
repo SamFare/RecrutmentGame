@@ -13,11 +13,11 @@ class HitBox {
     return this.x;
   }
 
-  getYmin() {
+  getYMin() {
     return this.y;
   }
 
-  getYmax() {
+  getYMax() {
     return this.y + this.height;
   }
 }

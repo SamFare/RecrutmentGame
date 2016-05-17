@@ -4,7 +4,7 @@
   "description": "A Game to match desired skills with a candidate",
   "main": "index.html",
   "scripts": {
-    "build-dev": " babel src -d lib &&   karma start && concat-cli -f  lib/AutomatedDropModel.js lib/SkillFactory.js lib/SkillSprite.js lib/Boundry.js lib/KeyboardInputSource.js lib/PlayerFactory.js lib/CharacterSprite.js  lib/KeyboardListenerModel.js lib/Character.js lib/Game.js lib/Main.js -o script.js"
+    "build-dev": " babel src -d lib &&   karma start && concat-cli -f lib/colider.js lib/HitBox.js lib/AutomatedDropModel.js lib/SkillFactory.js lib/SkillSprite.js lib/Boundry.js lib/KeyboardInputSource.js lib/PlayerFactory.js lib/CharacterSprite.js  lib/KeyboardListenerModel.js lib/Character.js lib/Game.js lib/Main.js -o script.js"
   },
   "dependencies": {},
   "devDependencies": {

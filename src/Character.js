@@ -5,10 +5,13 @@ class Character {
     this.HitBox = new HitBox(this.model.getX(), this.model.getY(),
               this.sprite.getHeight(), this.sprite.getWidth());
   }
+  getHitBox() {
+    return this.HitBox;
+  }
 
   draw() {
     this.HitBox = new HitBox(this.model.getX(), this.model.getY(),
-              this.sprite.getHeight(), this.sprite.getwidth());
+              this.sprite.getHeight(), this.sprite.getWidth());
     this.sprite.draw(this.model.getX(), this.model.getY());
   }
 }
