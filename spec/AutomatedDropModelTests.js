@@ -5,5 +5,6 @@ describe("AutomatedDropModel", function() {
       drop.update();
       expect(drop.getY()).toEqual(0 + drop.getSpeed());
     });
+
   });
 });
