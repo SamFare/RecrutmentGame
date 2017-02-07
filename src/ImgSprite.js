@@ -20,11 +20,9 @@ class ImgSprite {
 
  draw(x, y) {
    var imageObj = new Image();
-   imageObj.src = this.imgsrc
-
-   imageObj.onload = function() {
-      context.drawImage(imageObj, x, y);
-    };
+   imageObj.src = this.imgSrc
+   var context = this.context;
+   this.context.drawImage(imageObj, x, y);
 
 
  }

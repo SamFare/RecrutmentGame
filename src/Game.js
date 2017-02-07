@@ -37,7 +37,7 @@ class Game {
     })
 
     setTimeout( time => {
-      this.nextLoop(drawables, colider);
+      this.nextLoop(drawables, colider, background);
     }, 10);
 
   }
