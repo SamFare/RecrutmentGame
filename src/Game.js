@@ -2,43 +2,57 @@ class Game {
   constructor(canvas) {
     this.canvas = canvas;
     this.canvasContext = this.canvas.getContext("2d");
+    this.drawables = [];
   }
 
-  run() {
-    var player =  new PlayerFactory().build(this.canvas);
-    var skillFactory = new SkillFactory();
-    var skill = skillFactory.build(this.canvas);
-    var skill1 = skillFactory.build(this.canvas);
-    var skill2 = skillFactory.build(this.canvas);
-    var colider = new Colider();
-    var background = new BackgroundItemFactory("assets/background.png").build(this.canvas);
+  run() { 
+    this.addPlayer()
+    this.addDrawablesAsync()
+
+    this.nextLoop(new BackgroundItemFactory("assets/background.png").build(this.canvas));
+  }
+
+  addPlayer() {
+    let player =  new PlayerFactory().build(this.canvas);
     new KeyboardInputSource().regesterObserver(player.model);
+    this.drawables.push(player);
+  }
 
+  addDrawablesAsync() {
+    let skillFactory = new SkillFactory();
 
-
-    this.nextLoop([player, skill, skill1, skill2], colider,background );
+    setTimeout( () => {
+      this.drawables.push(skillFactory.build(this.canvas));
+    }, 1000);
   }
 
 
-  nextLoop(drawables, colider, background) {
-    this.colider = colider
-    this.canvasContext.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    background.draw()
-
-    drawables.forEach( drawable => {
-      var newArray = drawables.slice();
-      newArray.splice(drawables.indexOf(drawable), 1)
-      newArray.forEach( obsticle => {
-       if(this.colider.haveColided(obsticle , drawable)) {
-        drawables.splice(drawables.indexOf(drawable), 1)
-       };
-     })
-      drawable.draw();
-    })
-
+  nextLoop(background) {
     setTimeout( time => {
-      this.nextLoop(drawables, colider, background);
+      this.drawBackground(background);
+
+      for(let currentDrawable of this.drawables) {
+          for(let otherDrawable of this.getOtherDrawables(currentDrawable)) {     
+            if(new Colider().haveColided(otherDrawable , currentDrawable)) {
+              this.drawables.splice(this.drawables.indexOf(currentDrawable), 1)
+            }
+          }
+          currentDrawable.draw();
+      }
+      this.nextLoop(background);
     }, 10);
 
+  }
+
+  getOtherDrawables(currentDrawable) {
+    const copyDrawables =  drawables => this.drawables.slice();
+    let newArray = copyDrawables(this.drawables);
+    newArray.splice(this.drawables.indexOf(currentDrawable), 1);
+    return newArray; 
+  }
+
+  drawBackground(background) {
+    this.canvasContext.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    background.draw()
   }
 }
