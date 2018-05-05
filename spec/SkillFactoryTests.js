@@ -1,8 +1,7 @@
 describe("SkillFactory", function(){
   var skill;
   beforeEach(function() {
-    var factory = new SkillFactory();
-    skill = factory.build({height: 10, width: 10, getContext(string) {}});
+    skill = SkillFactory.build({height: 10, width: 10, getContext: string => {}});
   });
   describe("Build", function(){
 
@@ -23,9 +22,7 @@ describe("SkillFactory", function(){
     })
 
     it("creates a drop model with a y that is not the same twice", function(){
-      var factory = new SkillFactory();
-      skill2 = factory.build({height: 10, width: 10, getContext(string) {}});
-
+      skill2 = SkillFactory.build({height: 10, width: 10, getContext(string) {}});
       expect(skill.model.getX()).not.toEqual(skill2.model.getY())
     })
 

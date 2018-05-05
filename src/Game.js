@@ -7,10 +7,13 @@ class Game {
 
   run() { 
     this.addPlayer()
-    this.addDrawablesAsync()
-
-    this.nextLoop(new BackgroundItemFactory("assets/background.png").build(this.canvas));
+    
+    this.addDrawablesAsync([{}, {}])
+    this.nextLoop(BackgroundItemFactory.build(this.canvas, "assets/background.png"));
+    this.checkForEndOfGame()
   }
+
+  
 
   addPlayer() {
     let player =  new PlayerFactory().build(this.canvas);
@@ -18,12 +21,27 @@ class Game {
     this.drawables.push(player);
   }
 
-  addDrawablesAsync() {
-    let skillFactory = new SkillFactory();
-
-    setTimeout( () => {
-      this.drawables.push(skillFactory.build(this.canvas));
+  addDrawablesAsync(toDraw) {
+    setTimeout(() => {
+      this.drawables.push(SkillFactory.build(this.canvas, toDraw.pop()));
+      if(toDraw.length !== 0) {
+        this.addDrawablesAsync(toDraw);
+      } else {
+        this.allDrawablesDrawn = true;
+      }
+      
     }, 1000);
+  }
+
+  checkForEndOfGame() {
+    setTimeout(() => {
+      if(this.drawables.length === 1 && this.allDrawablesDrawn) {
+        console.log(`Game over!`)
+      } else {
+        this.checkForEndOfGame();
+      };
+
+    }, 10)
   }
 
 
@@ -39,7 +57,7 @@ class Game {
           }
           currentDrawable.draw();
       }
-      this.nextLoop(background);
+        this.nextLoop(background);
     }, 10);
 
   }
