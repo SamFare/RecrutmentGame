@@ -5,7 +5,7 @@ class Character {
     this.HitBox = new HitBox(this.model.getX(), this.model.getY(),
               this.sprite.getHeight(), this.sprite.getWidth());
   }
-  getHitBox() {
+  get hitBox() {
     return this.HitBox;
   }
 

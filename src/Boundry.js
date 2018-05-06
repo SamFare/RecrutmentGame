@@ -1,13 +1,14 @@
 class Boundry {
-  constructor(xMin, xMax, yMin, yMax) {
-    this.xMin = xMin;
-    this.xMax = xMax;
-    this.yMax = yMin;
-    this.yMax = yMax;
+  constructor(xMin, yMin, height, width) {
+    this.internalHitBox = new HitBox(xMin, yMin, height, width)
+  }
+
+  get hitBox() {
+    return this.internalHitBox;
   }
 
   isInBoundry(x, y) {
-    if((x >= this.xMin  && x <= this.xMax))
+    if((x >= this.hitBox.getXMin()  && x <= this.hitBox.getXMax()))
       return true;
     else
       return false;
