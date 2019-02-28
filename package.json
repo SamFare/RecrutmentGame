@@ -4,7 +4,7 @@
   "description": "A Game to match desired skills with a candidate",
   "main": "index.html",
   "scripts": {
-    "build-dev": "cp -r src lib &&   karma start && concat-cli -f lib/ImgSprite.js lib/StaticModel.js lib/BackgroundItemFactory.js lib/colider.js lib/HitBox.js lib/AutomatedDropModel.js lib/SkillFactory.js lib/SkillSprite.js lib/Boundry.js lib/KeyboardInputSource.js lib/PlayerFactory.js lib/CharacterSprite.js  lib/KeyboardListenerModel.js lib/Character.js lib/Game.js lib/Main.js -o script.js"
+    "build": "mkdir -p build && cp {style.css,index.html,Main.js} build && cp -a assets build && concat-cli -f src/OutOfBoundsColider.js src/ImgSprite.js src/StaticModel.js src/BackgroundItemFactory.js src/colider.js src/HitBox.js src/AutomatedDropModel.js src/SkillFactory.js src/SkillSprite.js src/Boundry.js src/KeyboardInputSource.js src/PlayerFactory.js src/CharacterSprite.js src/KeyboardListenerModel.js src/Character.js src/Game.js -o build/script.js && karma start"
   },
   "dependencies": {},
   "devDependencies": {
@@ -15,6 +15,6 @@
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^2.0.1"
   },
-  "author": "",
+  "author": "Sam Fare",
   "license": "ISC"
 }
