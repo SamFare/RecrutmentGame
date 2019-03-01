@@ -30,7 +30,8 @@ class Game {
     }, time);
   }
 
-  isGameOver() { 
+  isGameOver() {
+    console.log(this.drawables.length) 
     return this.drawables.length === 1 && this.allDrawablesDrawn;
   }
 
@@ -46,11 +47,16 @@ class Game {
       this.drawBackground(background);
 
       for(let currentDrawable of this.drawables) {
-          for(let otherDrawable of this.getOtherDrawables(currentDrawable)) {     
-            if(new Colider().haveColided(otherDrawable , currentDrawable)) {
-              this.drawables.splice(this.drawables.indexOf(currentDrawable), 1)
-            }
-          }
+        
+        if(new OutOfBoundsColider().haveColided(currentDrawable, background)) {
+          this.drawables.splice(this.drawables.indexOf(currentDrawable), 1)
+        }
+
+        for(let otherDrawable of this.getOtherDrawables(currentDrawable)) {       
+          if(new Colider().haveColided(otherDrawable , currentDrawable)) {
+            this.drawables.splice(this.drawables.indexOf(currentDrawable), 1)
+          }  
+        }
           currentDrawable.draw();
       }
         this.nextLoop(background);
@@ -59,8 +65,7 @@ class Game {
   }
 
   getOtherDrawables(currentDrawable) {
-    const copyDrawables = this.drawables.slice();
-    let newArray = copyDrawables(this.drawables);
+    let newArray = this.drawables.slice();
     newArray.splice(this.drawables.indexOf(currentDrawable), 1);
     return newArray; 
   }

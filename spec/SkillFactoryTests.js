@@ -13,11 +13,11 @@ describe("SkillFactory", function(){
       expect(skill.sprite).toEqual(jasmine.any(SkillSprite));
     });
 
-    it("creates a drop model with a x value of zero", function(){
-      expect(skill.model.getY()).toEqual(0);
+    it("creates a drop model with a y value of zero", function(){
+      expect(skill.model.getY()).toEqual(10);
     })
 
-    it("creates a drop model with a y value greater than 0", function(){
+    it("creates a drop model with a x value greater than 0", function(){
       expect(skill.model.getX()).toBeGreaterThan(0);
     })
 
