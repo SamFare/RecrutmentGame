@@ -5,42 +5,43 @@ class Game {
     this.drawables = [];
   }
 
-  run() { 
-    this.addPlayer()
-    
-    this.addDrawablesAsync([{}, {}])
+  run() {
+    this.drawables.push(this.createPlayer());
+    //const skills = this.createSkills([{}, {}]);    
+    this.feedDrawablesEvery(1000, [{}, {}]);
     this.nextLoop(BackgroundItemFactory.build(this.canvas, "assets/background.png"));
     this.checkForEndOfGame()
   }
-
   
-
-  addPlayer() {
-    let player =  new PlayerFactory().build(this.canvas);
-    new KeyboardInputSource().regesterObserver(player.model);
-    this.drawables.push(player);
+  createSkills(skills) {
+    return skills.map(drawable => SkillFactory.build(this.canvas, drawable));
   }
 
-  addDrawablesAsync(toDraw) {
+  createPlayer() {
+    let player =  new PlayerFactory().build(this.canvas);
+    new KeyboardInputSource().regesterObserver(player.model);
+    return player;
+  }
+
+  feedDrawablesEvery(time, toDraw) {
     setTimeout(() => {
       this.drawables.push(SkillFactory.build(this.canvas, toDraw.pop()));
       if(toDraw.length !== 0) {
-        this.addDrawablesAsync(toDraw);
+        this.feedDrawablesEvery(1000, toDraw);
       } else {
         this.allDrawablesDrawn = true;
       }
       
-    }, 1000);
+    }, time);
+  }
+
+  isGameOver() { 
+    return this.drawables.length === 1 && this.allDrawablesDrawn;
   }
 
   checkForEndOfGame() {
     setTimeout(() => {
-      if(this.drawables.length === 1 && this.allDrawablesDrawn) {
-        console.log(`Game over!`)
-      } else {
-        this.checkForEndOfGame();
-      };
-
+      this.isGameOver() ? console.log(`Game over!`) :  this.checkForEndOfGame();
     }, 10)
   }
 
