@@ -1,30 +1,64 @@
-describe("Given an out of bounds colider", () => {
-    let colider; 
-    let boundry;
+describe("out of bounds colider", () => {
+  it('does not detect a collision when an object is inside the boundry on x and y axis',() => { 
+        const boundry = new Boundry(0, 0, 100, 100)
+        const object =  {hitBox: new HitBox(10, 80, 10, 10)}
+        const colider = new OutOfBoundsColider();
+        expect(colider.haveColided(object, boundry)).toBe(false);
+    })
 
-    beforeEach(() => {
-        boundry = new Boundry(0, 0, 100, 100)
-    });
+    it('does detect a collision when an object is greater than the boundry on the x axis',() => { 
+        const boundry = new Boundry(0, 0, 100, 100)
+        const objectThatIsOutOfBounds =  {hitBox: new HitBox(110, 80, 10, 10)}
+        const colider = new OutOfBoundsColider();
+        expect(colider.haveColided(objectThatIsOutOfBounds, boundry)).toBe(true);
+    })
 
-    describe("When an object is inside the boundry", () => {
-        let object; 
-        beforeEach(() => {
-            object =  SkillFactory.build({height: 100, width: 100, getContext(string) {}});
-            colider = new OutOfBoundsColider(object, boundry);  
-        })
-        it("it has not been affected by the colider", () => {
-            expect(colider.haveColided(object, boundry)).toBe(false);
-        })    
-    });
+    it('does detect a collision when an object is less than the boundry on the x axis',() => { 
+        const boundry = new Boundry(0, 0, 100, 100)
+        const objectThatIsOutOfBounds =  {hitBox: new HitBox(-100, 80, 10, 10)}
+        const colider = new OutOfBoundsColider();
+        expect(colider.haveColided(objectThatIsOutOfBounds, boundry)).toBe(true);
+    })
 
-    describe("When an object is outside the boundry on the x axis", () => {
-        let objectThatIsOutOfBounds; 
-        beforeEach(() => {
-            objectThatIsOutOfBounds =  {hitBox: new HitBox(110, 80, 10, 10)}
-            colider = new OutOfBoundsColider(objectThatIsOutOfBounds, boundry);
-        })
-        it("it has colided", () => {
-            expect(colider.haveColided(objectThatIsOutOfBounds, boundry)).toBe(true);
-        })    
-    });
+    it('does detect a collision when an object is less than the boundry on the y axis',() => { 
+        const boundry = new Boundry(0, 0, 100, 100)
+        const objectThatIsOutOfBounds =  {hitBox: new HitBox(80, -80, 10, 10)}
+        const colider = new OutOfBoundsColider();
+        expect(colider.haveColided(objectThatIsOutOfBounds, boundry)).toBe(true);
+    })
+
+    it('does detect a collision when an object is greater than the boundry on the y axis',() => { 
+        const boundry = new Boundry(0, 0, 100, 100)
+        const objectThatIsOutOfBounds =  {hitBox: new HitBox(80, 800, 10, 10)}
+        const colider = new OutOfBoundsColider();
+        expect(colider.haveColided(objectThatIsOutOfBounds, boundry)).toBe(true);
+    })
+
+    it('does detect a collision when an object is equal too the boundry on the x axis',() => { 
+        const boundry = new Boundry(0, 0, 100, 100)
+        const objectThatIsOutOfBounds =  {hitBox: new HitBox(90, 80, 10, 10)}
+        const colider = new OutOfBoundsColider();
+        expect(colider.haveColided(objectThatIsOutOfBounds, boundry)).toBe(true);
+    })
+
+    it('does detect a collision when an object is equal too the lower boundry on the x axis',() => { 
+        const boundry = new Boundry(0, 0, 100, 100)
+        const objectThatIsOutOfBounds =  {hitBox: new HitBox(0, 10, 10, 10)}
+        const colider = new OutOfBoundsColider();
+        expect(colider.haveColided(objectThatIsOutOfBounds, boundry)).toBe(true);
+    })
+
+    it('does detect a collision when an object is equal too the lower boundry on the y axis',() => { 
+        const boundry = new Boundry(0, 0, 100, 100)
+        const objectThatIsOutOfBounds =  {hitBox: new HitBox(10, 0, 10, 10)}
+        const colider = new OutOfBoundsColider();
+        expect(colider.haveColided(objectThatIsOutOfBounds, boundry)).toBe(true);
+    })
+
+    it('does detect a collision when an object is equal too the boundry on the y axis',() => { 
+        const boundry = new Boundry(0, 0, 100, 100)
+        const objectThatIsOutOfBounds =  {hitBox: new HitBox(10, 90, 10, 10)}
+        const colider = new OutOfBoundsColider();
+        expect(colider.haveColided(objectThatIsOutOfBounds, boundry)).toBe(true);
+    })
 });

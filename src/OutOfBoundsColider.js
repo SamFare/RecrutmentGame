@@ -1,7 +1,8 @@
 class OutOfBoundsColider {
     haveColided(object, boundry) {
-        console.log(`============= ${JSON.stringify(boundry)} ================`);
-        console.log(`================== ${boundry.X} > ${object.hitBox.getXMax()} ==========`); 
-        return object.hitBox.getXMax() > boundry.hitBox.getXMax(); 
+        return object.hitBox.getXMax() >= boundry.hitBox.getXMax()
+                || object.hitBox.getXMin() <= boundry.hitBox.getXMin()
+                || object.hitBox.getYMin() <= boundry.hitBox.getYMin()
+                || object.hitBox.getYMax() >= boundry.hitBox.getYMax();
     }
 }

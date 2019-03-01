@@ -1,17 +1,4 @@
 describe('Game', () => { 
-    describe('skill creation', () => { 
-        it('creates one skill when requested', () => { 
-            const game = new Game(mockContext);
-            const skills = game.createSkills([{}]);
-            expect(skills.length).toEqual(1);
-        });
-
-        it('can create mutiple drawables', () => { 
-            const game = new Game(mockContext);
-            const skills = game.createSkills([{}, {}, {}]);
-            expect(skills.length).toEqual(3);
-        });
-    });
 
     describe('player creation', () => { 
         it('creates a player on demand', () => { 

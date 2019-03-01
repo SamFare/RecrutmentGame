@@ -7,14 +7,9 @@ class Game {
 
   run() {
     this.drawables.push(this.createPlayer());
-    //const skills = this.createSkills([{}, {}]);    
     this.feedDrawablesEvery(1000, [{}, {}]);
     this.nextLoop(BackgroundItemFactory.build(this.canvas, "assets/background.png"));
     this.checkForEndOfGame()
-  }
-  
-  createSkills(skills) {
-    return skills.map(drawable => SkillFactory.build(this.canvas, drawable));
   }
 
   createPlayer() {
@@ -64,7 +59,7 @@ class Game {
   }
 
   getOtherDrawables(currentDrawable) {
-    const copyDrawables =  drawables => this.drawables.slice();
+    const copyDrawables = this.drawables.slice();
     let newArray = copyDrawables(this.drawables);
     newArray.splice(this.drawables.indexOf(currentDrawable), 1);
     return newArray; 
