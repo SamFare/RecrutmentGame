@@ -15,6 +15,7 @@
     "karma": "^4.0.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^2.0.1",
+    "puppeteer": "^1.12.2",
     "uglify-js": "^2.6.2"
   },
   "author": "Sam Fare",
