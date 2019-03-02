@@ -1,4 +1,4 @@
-osx_instance:
-  image: mojave-basegit
+container:
+  image: node:latest
 test_task:
   script: npm run build-ci

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "mkdir -p build && cp style.css index.html Main.js build && cp -a assets build && concat-cli -f src/OutOfBoundsColider.js src/ImgSprite.js src/StaticModel.js src/BackgroundItemFactory.js src/Colider.js src/HitBox.js src/AutomatedDropModel.js src/SkillFactory.js src/SkillSprite.js src/Boundry.js src/KeyboardInputSource.js src/PlayerFactory.js src/CharacterSprite.js src/KeyboardListenerModel.js src/Character.js src/Game.js -o build/script.js && karma start",
     "start": "npm run build && http-server ./build/", 
-    "build-ci": "brew install node && npm i && npm run build"
+    "build-ci": "apt-get install libpangocairo-1.0-0 libx11-xcb1 libxcomposite1 libxcursor1 libxdamage1 libxi6 libxtst6 libnss3 libcups2 libxss1 libxrandr2 libgconf2-4 libasound2 libatk1.0-0 libgtk-3-0 && npm i && npm run build"
   },
   "dependencies": {},
   "devDependencies": {
