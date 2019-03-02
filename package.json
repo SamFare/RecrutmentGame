@@ -5,7 +5,8 @@
   "main": "index.html",
   "scripts": {
     "build": "mkdir -p build && cp {style.css,index.html,Main.js} build && cp -a assets build && concat-cli -f src/OutOfBoundsColider.js src/ImgSprite.js src/StaticModel.js src/BackgroundItemFactory.js src/colider.js src/HitBox.js src/AutomatedDropModel.js src/SkillFactory.js src/SkillSprite.js src/Boundry.js src/KeyboardInputSource.js src/PlayerFactory.js src/CharacterSprite.js src/KeyboardListenerModel.js src/Character.js src/Game.js -o build/script.js && karma start",
-    "start": "npm run build && http-server ./build/"
+    "start": "npm run build && http-server ./build/",
+    "test": "npm run build"
   },
   "dependencies": {},
   "devDependencies": {
