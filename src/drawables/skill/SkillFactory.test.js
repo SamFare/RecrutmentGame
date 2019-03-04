@@ -1,3 +1,7 @@
+import SkillFactory from './SkillFactory.js'
+import SkillSprite from './SkillSprite.js'
+import AutomatedDropModel from './AutomatedDropModel.js'
+
 describe("SkillFactory", function(){
   var skill;
   beforeEach(function() {
@@ -22,7 +26,7 @@ describe("SkillFactory", function(){
     })
 
     it("creates a drop model with a y that is not the same twice", function(){
-      skill2 = SkillFactory.build({height: 10, width: 10, getContext(string) {}});
+      const skill2 = SkillFactory.build({height: 10, width: 10, getContext(string) {}});
       expect(skill.model.getX()).not.toEqual(skill2.model.getY())
     })
 

@@ -1,3 +1,7 @@
+import BackgroundItemFactory from './BackgroundItemFactory.js'
+import StaticModel from './StaticModel.js'
+import ImgSprite from './ImgSprite.js'
+
 describe("Background Item Factory", () => {
   let background;
   beforeEach(() => {

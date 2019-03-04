@@ -1,3 +1,5 @@
+import AutomatedDropModel from './AutomatedDropModel.js'
+
 describe("AutomatedDropModel", function() {
   describe("update", function(){
     it("Makes the object fall by speed after one update", function() {
