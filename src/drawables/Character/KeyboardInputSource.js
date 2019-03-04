@@ -1,4 +1,4 @@
-class KeyboardInputSource {
+export default class KeyboardInputSource {
   constructor() {
     this.keysDown = {};
     this.observers = [];

@@ -1,4 +1,4 @@
-class CharacterSprite {
+export default class CharacterSprite {
   constructor(height, width, context) {
     this.height = height;
     this.width = width;

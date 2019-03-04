@@ -1,4 +1,4 @@
-class AutomatedDropModel {
+export default class AutomatedDropModel {
   constructor(x, y) {
     this.x = x;
     this.y = y;

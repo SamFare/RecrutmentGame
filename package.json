@@ -4,7 +4,7 @@
   "description": "A Game to match desired skills with a candidate",
   "main": "index.html",
   "scripts": {
-    "build": "mkdir -p build && cp {style.css,index.html,Main.js} build && cp -a assets build && concat-cli -f src/**/*.js src/Game.js -o build/script.js && karma start",
+    "build": "mkdir -p build && cp {style.css,index.html,Main.js} build && cp -a assets build &&  cp -a src/ build/ && karma start",
     "start": "npm run build && http-server ./build/"
   },
   "dependencies": {},

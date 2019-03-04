@@ -1,4 +1,4 @@
-class OutOfBoundsColider {
+export default class OutOfBoundsColider {
     haveColided(object, boundry) {
         return object.hitBox.getXMax() > boundry.hitBox.getXMax()
                 || object.hitBox.getXMin() < boundry.hitBox.getXMin()

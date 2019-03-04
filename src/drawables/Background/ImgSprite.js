@@ -1,4 +1,4 @@
-class ImgSprite {
+export default class ImgSprite {
   constructor(height, width, context, imgSrc) {
     this.height = height;
     this.width = width;

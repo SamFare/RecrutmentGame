@@ -1,3 +1,5 @@
+import Game from './Game'
+
 describe('Game', () => { 
 
     describe('player creation', () => { 
