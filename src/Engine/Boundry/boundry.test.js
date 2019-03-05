@@ -1,3 +1,5 @@
+import Boundry from '../Boundry/Boundry.js'
+
 describe("Boundry", function(){
   describe("isInBoundry", function(){
     it("is in boundry when x is between constarints", function(){

@@ -1,4 +1,4 @@
-class HitBox {
+export default class HitBox {
   constructor(x, y, height, width) {
     this.x = x;
     this.y = y;

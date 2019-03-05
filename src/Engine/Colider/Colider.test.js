@@ -1,3 +1,6 @@
+import Colider from './Colider.js'
+import PlayerFactory from '../../drawables/Character/PlayerFactory.js'
+
 describe("colider", function(){
   var entity1;
   var entity2;

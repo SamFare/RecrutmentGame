@@ -1,4 +1,12 @@
-class Game {
+import PlayerFactory from './drawables/Character/PlayerFactory.js'
+import KeyboardInputSource from './drawables/Character/KeyboardInputSource.js'
+import OutOfBoundsColider from './Engine/OutOfBoundsColider/OutOfBoundsColider.js'
+import Colider from "./Engine/Colider/Colider.js"
+import BackgroundItemFactory from "./drawables/Background/BackgroundItemFactory.js"
+import SkillFactory from "./drawables/skill/SkillFactory.js"
+
+
+export default class Game {
   constructor(canvas) {
     this.canvas = canvas;
     this.canvasContext = this.canvas.getContext("2d");
@@ -31,7 +39,6 @@ class Game {
   }
 
   isGameOver() {
-    console.log(this.drawables.length) 
     return this.drawables.length === 1 && this.allDrawablesDrawn;
   }
 

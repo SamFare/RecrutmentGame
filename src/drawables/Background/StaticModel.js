@@ -1,4 +1,4 @@
-class StaticModel {
+export default class StaticModel {
   getX() {
     return 1;
   }

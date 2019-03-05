@@ -1,3 +1,5 @@
+import CharacterSprite from './CharacterSprite.js'
+
 describe("Character Tests", function() {
   var playerSprite;
   beforeEach(function(){

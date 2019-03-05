@@ -1,4 +1,9 @@
-class PlayerFactory {
+import KeyboardListenerModel from '../Character/KeyboardListenerModel.js'
+import Boundry from '../../Engine/Boundry/Boundry.js'
+import CharacterSprite from '../Character/CharacterSprite.js'
+import Character from '../Character/Character.js'
+
+export default class PlayerFactory {
   build(canvas){
     var playerHeight = 50;
     var playerWidth = 25

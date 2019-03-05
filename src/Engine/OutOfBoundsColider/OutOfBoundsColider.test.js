@@ -1,3 +1,7 @@
+import OutOfBoundsColider from './OutOfBoundsColider.js'
+import HitBox from '../Boundry/HitBox.js'
+import Boundry from '../Boundry/Boundry.js'
+
 describe("out of bounds colider", () => {
   it('does not detect a collision when an object is inside the boundry on x and y axis',() => { 
         const boundry = new Boundry(0, 0, 100, 100)

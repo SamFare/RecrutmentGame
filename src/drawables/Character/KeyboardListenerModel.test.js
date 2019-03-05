@@ -1,3 +1,6 @@
+import KeyboardListenerModel from './KeyboardListenerModel.js'
+import Boundry from '../../Engine/Boundry/Boundry.js'
+
 describe("KeyboardListenerModel", function() {
   var playerModel
   beforeEach(function() {

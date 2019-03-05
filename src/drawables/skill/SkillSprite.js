@@ -1,4 +1,4 @@
-class SkillSprite {
+export default class SkillSprite {
   constructor(height, width, context) {
     this.height = height;
     this.width = width;

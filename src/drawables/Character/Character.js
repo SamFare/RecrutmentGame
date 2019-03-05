@@ -1,4 +1,6 @@
-class Character {
+import HitBox from '../../Engine/Boundry/HitBox.js'
+
+export default class Character {
   constructor(model, sprite) {
     this.model = model;
     this.sprite = sprite;

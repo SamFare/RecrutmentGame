@@ -1,4 +1,4 @@
-class KeyboardListenerModel {
+export default class KeyboardListenerModel {
   constructor(x, y, boundry) {
     this.x = x;
     this.y = y;

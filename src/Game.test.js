@@ -1,3 +1,5 @@
+import Game from './Game.js'
+
 describe('Game', () => { 
 
     describe('player creation', () => { 

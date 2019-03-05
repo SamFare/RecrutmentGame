@@ -1,4 +1,6 @@
-class Boundry {
+import HitBox from './HitBox.js'
+
+export default class Boundry {
   constructor(xMin, yMin, height, width) {
     this.internalHitBox = new HitBox(xMin, yMin, height, width)
   }
