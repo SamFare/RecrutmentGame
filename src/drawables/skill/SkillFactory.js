@@ -1,6 +1,7 @@
 import Character from '../Character/Character.js'
 import AutomatedDropModel from './AutomatedDropModel.js'
 import SkillSprite from './SkillSprite.js'
+
 export default class SkillFactory {
   static build(canvas) {
     return new Character(
