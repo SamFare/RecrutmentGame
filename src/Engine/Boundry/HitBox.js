@@ -1,23 +1,23 @@
 export default class HitBox {
-  constructor(x, y, height, width) {
-    this.x = x;
-    this.y = y;
-    this.height = height;
-    this.width = width;
+  constructor (x, y, height, width) {
+    this.x = x
+    this.y = y
+    this.height = height
+    this.width = width
   }
-  getXMax() {
-    return this.x + this.width;
-  }
-
-  getXMin() {
-    return this.x;
+  getXMax () {
+    return this.x + this.width
   }
 
-  getYMin() {
-    return this.y;
+  getXMin () {
+    return this.x
   }
 
-  getYMax() {
-    return this.y + this.height;
+  getYMin () {
+    return this.y
+  }
+
+  getYMax () {
+    return this.y + this.height
   }
 }

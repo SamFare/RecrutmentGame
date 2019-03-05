@@ -1,9 +1,9 @@
 export default class StaticModel {
-  getX() {
-    return 1;
+  getX () {
+    return 1
   }
 
-  getY() {
-    return 1;
+  getY () {
+    return 1
   }
 }
