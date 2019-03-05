@@ -1,29 +1,25 @@
 export default class KeyboardInputSource {
-  constructor() {
-    this.keysDown = {};
-    this.observers = [];
+  constructor () {
+    this.keysDown = {}
+    this.observers = []
 
-    addEventListener("keydown", event =>  {
-	     this.keysDown[event.keyCode] = true;
-       this.trigger();
-     }, false);
+    addEventListener('keydown', event => {
+      this.keysDown[event.keyCode] = true
+      this.trigger()
+    }, false)
 
-    addEventListener("keyup", event =>  {
-	      delete this.keysDown[event.keyCode];
-     }, false);
+    addEventListener('keyup', event => {
+      delete this.keysDown[event.keyCode]
+    }, false)
   }
 
-  regesterObserver(observer) {
+  regesterObserver (observer) {
     this.observers.push(observer)
   }
 
-  trigger() {
+  trigger () {
     this.observers.forEach(observer => {
-      observer.react(this.keysDown);
-    });
+      observer.react(this.keysDown)
+    })
   }
-
-
-
-
 };

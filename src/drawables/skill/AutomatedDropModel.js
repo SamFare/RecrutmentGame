@@ -1,30 +1,30 @@
 export default class AutomatedDropModel {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-    this.speed = 1;
-    this.go();
+  constructor (x, y) {
+    this.x = x
+    this.y = y
+    this.speed = 1
+    this.go()
   }
-  getX() {
-    return this.x;
-  }
-
-  getY() {
-    return this.y;
+  getX () {
+    return this.x
   }
 
-  update() {
-    this.y += this.speed;
+  getY () {
+    return this.y
   }
 
-  getSpeed() {
-    return this.speed;
+  update () {
+    this.y += this.speed
   }
 
-  go() {
+  getSpeed () {
+    return this.speed
+  }
+
+  go () {
     setTimeout(goLoop => {
-      this.update();
-      this.go();
-    },10)
+      this.update()
+      this.go()
+    }, 10)
   }
 }
