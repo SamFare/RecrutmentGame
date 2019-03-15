@@ -3,19 +3,21 @@ import KeyboardInputSource from './drawables/Character/KeyboardInputSource.js'
 import OutOfBoundsColider from './Engine/OutOfBoundsColider/OutOfBoundsColider.js'
 import Colider from './Engine/Colider/Colider.js'
 import BackgroundItemFactory from './drawables/Background/BackgroundItemFactory.js'
+import DrawableFeeder from './RecruitmentGame/DrawableFeeder.js'
 import SkillFactory from './drawables/skill/SkillFactory.js'
-
 export default class Game {
   constructor (canvas) {
     this.canvas = canvas
     this.canvasContext = this.canvas.getContext('2d')
-    this.drawables = []
+    this.feeder = new DrawableFeeder()
   }
 
   run () {
-    this.drawables.push(this.createPlayer())
-    this.feedDrawablesEvery(1000, [{}, {}])
+    this.feeder.addDrawable(this.createPlayer())
+    this.feeder.feedDrawablesEvery(1000, [SkillFactory.build(this.canvas), SkillFactory.build(this.canvas)])
+
     this.nextLoop(BackgroundItemFactory.build(this.canvas, 'assets/background.png'))
+
     this.checkForEndOfGame()
   }
 
@@ -25,19 +27,8 @@ export default class Game {
     return player
   }
 
-  feedDrawablesEvery (time, toDraw) {
-    setTimeout(() => {
-      this.drawables.push(SkillFactory.build(this.canvas, toDraw.pop()))
-      if (toDraw.length !== 0) {
-        this.feedDrawablesEvery(1000, toDraw)
-      } else {
-        this.allDrawablesDrawn = true
-      }
-    }, time)
-  }
-
   isGameOver () {
-    return this.drawables.length === 1 && this.allDrawablesDrawn
+    return this.feeder.getDrawables().length === 1 && this.feeder.allDrawablesDrawn()
   }
 
   checkForEndOfGame () {
@@ -50,14 +41,14 @@ export default class Game {
     setTimeout(time => {
       this.drawBackground(background)
 
-      for (let currentDrawable of this.drawables) {
+      for (let currentDrawable of this.feeder.getDrawables()) {
         if (new OutOfBoundsColider().haveColided(currentDrawable, background)) {
-          this.drawables.splice(this.drawables.indexOf(currentDrawable), 1)
+          this.feeder.getDrawables().splice(this.feeder.getDrawables().indexOf(currentDrawable), 1)
         }
 
         for (let otherDrawable of this.getOtherDrawables(currentDrawable)) {
           if (new Colider().haveColided(otherDrawable, currentDrawable)) {
-            this.drawables.splice(this.drawables.indexOf(currentDrawable), 1)
+            this.feeder.getDrawables().splice(this.feeder.getDrawables().indexOf(currentDrawable), 1)
           }
         }
         currentDrawable.draw()
@@ -67,8 +58,8 @@ export default class Game {
   }
 
   getOtherDrawables (currentDrawable) {
-    let newArray = this.drawables.slice()
-    newArray.splice(this.drawables.indexOf(currentDrawable), 1)
+    let newArray = this.feeder.getDrawables().slice()
+    newArray.splice(this.feeder.getDrawables().indexOf(currentDrawable), 1)
     return newArray
   }
 

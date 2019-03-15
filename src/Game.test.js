@@ -1,4 +1,4 @@
-import Game from './Game.js'
+/* import Game from './Game.js'
 import mockContext from '../spec-support/mockContext.js'
 
 describe('Game', () => {
@@ -39,4 +39,4 @@ describe('Game', () => {
       expect(game.isGameOver()).toBe(false)
     })
   })
-})
+}) */
