@@ -6,6 +6,10 @@ export default class KeyboardListenerModel {
     this.speed = 10
   }
 
+  go () {
+    // disgusting tech debt
+  }
+
   setBoundry (boundry) {
     this.boundry = boundry
   }

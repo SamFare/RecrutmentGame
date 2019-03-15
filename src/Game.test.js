@@ -13,29 +13,25 @@ describe('Game', () => {
   describe('game over logic', () => {
     it('brings the game to an end when there are no objects other than the player', () => {
       var game = new Game(mockContext)
-      game.drawables = [{}]
-      game.allDrawablesDrawn = true
+      game.feeder = { getDrawables () { return [{}] }, allDrawablesDrawn () { return true } }
       expect(game.isGameOver()).toBe(true)
     })
 
     it('does not bring the game to an end when there are objects other than the player', () => {
       var game = new Game(mockContext)
-      game.drawables = [{}, {}]
-      game.allDrawablesDrawn = true
+      game.feeder = { getDrawables () { return [{}, {}] }, allDrawablesDrawn () { return true } }
       expect(game.isGameOver()).toBe(false)
     })
 
     it('does not bring the game to an end when drawables have not yet been drawn', () => {
       var game = new Game(mockContext)
-      game.drawables = [{}]
-      game.allDrawablesDrawn = false
+      game.feeder = { getDrawables () { return [{}] }, allDrawablesDrawn () { return false } }
       expect(game.isGameOver()).toBe(false)
     })
 
     it('does not bring the game to an end when drawables have not yet been drawn and there are objects other than the player', () => {
       var game = new Game(mockContext)
-      game.drawables = [{}, {}]
-      game.allDrawablesDrawn = false
+      game.feeder = { getDrawables () { return [{}, {}] }, allDrawablesDrawn () { return false } }
       expect(game.isGameOver()).toBe(false)
     })
   })
