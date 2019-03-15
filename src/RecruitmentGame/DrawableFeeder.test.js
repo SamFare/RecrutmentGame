@@ -1,7 +1,7 @@
 import DrawableFeeder from './DrawableFeeder.js'
 
 const sleep = async (time) => new Promise(resolve => setTimeout(resolve, time))
-const fakeDrawable = { model: { go () { }}  }
+const fakeDrawable = { model: { go () { } } }
 
 describe('DrawableFeeder', () => {
   it('when there are no drawables I get nothing when I call get drawable', () => {
