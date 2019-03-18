@@ -35,4 +35,18 @@ describe('Game', () => {
       expect(game.isGameOver()).toBe(false)
     })
   })
+
+  describe('screen height adjustment', () => {
+    it('updates the height to be the same as the offset height', () => {
+      const canvas = { height: undefined, offsetHeight: 10, getContext () {} }
+      const game = new Game(canvas)
+      expect(game.canvas.height).toBe(10)
+    })
+
+    it('updates the width to be the same as the offset height', () => {
+      const canvas = { width: undefined, offsetWidth: 15, getContext () {} }
+      const game = new Game(canvas)
+      expect(game.canvas.width).toBe(15)
+    })
+  })
 })

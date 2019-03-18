@@ -8,8 +8,14 @@ import SkillFactory from './drawables/skill/SkillFactory.js'
 export default class Game {
   constructor (canvas) {
     this.canvas = canvas
+    this.resizeScreen()
     this.canvasContext = this.canvas.getContext('2d')
     this.feeder = new DrawableFeeder()
+  }
+
+  resizeScreen () {
+    this.canvas.width = this.canvas.offsetWidth
+    this.canvas.height = this.canvas.offsetHeight
   }
 
   run () {
